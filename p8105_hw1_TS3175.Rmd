@@ -7,22 +7,23 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+```{r Question_1}
+library(tidyverse)
+la_df = tibble(
+  norm_samp=rnorm(8),
+  norm_samp_pos=norm_samp>0,
+  vec_char=c("T", "A", "N", "U", "S", "R", "E", "E"),
+  vec_factor= factor(c("cat", "dog", "snake", "cat", "dog", "snake", "cat", "dog")),
+)
+```
+## The mean of norm_samp and norm_samp_pos works but the mean of vec_char and vec_factor do not.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r}
+la_df-tibble(
+  as.numeric(norm_samp),
+  as.numeric(norm_samp_pos),
+  as.numeric(vec_char=c("T", "A", "N", "U", "S", "R", "E", "E")),
+  as.numeric(vec_factor=factor(c("cat", "dog", "snake", "cat", "dog", "snake", "cat", "dog")))
+)
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
