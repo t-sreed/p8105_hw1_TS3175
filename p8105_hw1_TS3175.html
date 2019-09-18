@@ -382,7 +382,7 @@ summary {
   vec_factor= factor(c(&quot;cat&quot;, &quot;dog&quot;, &quot;snake&quot;, &quot;cat&quot;, &quot;dog&quot;, &quot;snake&quot;, &quot;cat&quot;, &quot;dog&quot;)),
 )
   mean(pull(la_df, norm_samp))</code></pre>
-<pre><code>## [1] -0.04745952</code></pre>
+<pre><code>## [1] 0.1257925</code></pre>
 <pre class="r"><code>  mean(pull(la_df,norm_samp_pos))</code></pre>
 <pre><code>## [1] 0.625</code></pre>
 <pre class="r"><code>  mean(pull(la_df,vec_char))</code></pre>
@@ -395,17 +395,14 @@ summary {
 <pre><code>## [1] NA</code></pre>
 <div id="the-mean-of-norm_samp-and-norm_samp_pos-works-but-the-mean-of-vec_char-and-vec_factor-do-not." class="section level2">
 <h2>The mean of norm_samp and norm_samp_pos works but the mean of vec_char and vec_factor do not.</h2>
-<pre class="r"><code>  mean(as.numeric(pull(la_df,norm_samp_pos)))</code></pre>
-<pre><code>## [1] 0.625</code></pre>
-<pre class="r"><code>  mean(as.numeric(pull(la_df,vec_char)))</code></pre>
+<pre class="r"><code>  mean(as.numeric(pull(la_df,norm_samp_pos)))
+  mean(as.numeric(pull(la_df,vec_char)))</code></pre>
 <pre><code>## Warning in mean(as.numeric(pull(la_df, vec_char))): NAs introduced by
 ## coercion</code></pre>
-<pre><code>## [1] NA</code></pre>
 <pre class="r"><code>  mean(as.numeric(pull(la_df,vec_factor)))</code></pre>
-<pre><code>## [1] 1.875</code></pre>
 </div>
-<div id="the-mean-of-norm_samp-and-factor-vector-works-but-the-mean-of-the-character-vector" class="section level2">
-<h2>The mean of norm_samp and factor vector works but the mean of the character vector</h2>
+<div id="the-mean-of-norm_samp-and-factor-vector-works-but-the-mean-of-the-character-vector.-it-doesnt-work-for-character-vector-because-it-cannot-be-translated-into-numbers." class="section level2">
+<h2>The mean of norm_samp and factor vector works but the mean of the character vector. It doesn’t work for character vector because it cannot be translated into numbers.</h2>
 </div>
 
 

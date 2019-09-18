@@ -22,9 +22,11 @@ la_df = tibble(
 ```
 ## The mean of norm_samp and norm_samp_pos works but the mean of vec_char and vec_factor do not.
 
-```{r}
+```{r Question_1_cont, results="hide"} 
   mean(as.numeric(pull(la_df,norm_samp_pos)))
   mean(as.numeric(pull(la_df,vec_char)))
   mean(as.numeric(pull(la_df,vec_factor)))
 ```
-## The mean of norm_samp and factor vector works but the mean of the character vector
+## The mean of norm_samp and factor vector works but the mean of the character vector. It doesn't work for character vector because it cannot be translated into numbers.
+
+
