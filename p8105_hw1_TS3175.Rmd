@@ -15,15 +15,16 @@ la_df = tibble(
   vec_char=c("T", "A", "N", "U", "S", "R", "E", "E"),
   vec_factor= factor(c("cat", "dog", "snake", "cat", "dog", "snake", "cat", "dog")),
 )
+  mean(pull(la_df, norm_samp))
+  mean(pull(la_df,norm_samp_pos))
+  mean(pull(la_df,vec_char))
+  mean(pull(la_df,vec_factor))
 ```
 ## The mean of norm_samp and norm_samp_pos works but the mean of vec_char and vec_factor do not.
 
 ```{r}
-la_df-tibble(
-  as.numeric(norm_samp),
-  as.numeric(norm_samp_pos),
-  as.numeric(vec_char=c("T", "A", "N", "U", "S", "R", "E", "E")),
-  as.numeric(vec_factor=factor(c("cat", "dog", "snake", "cat", "dog", "snake", "cat", "dog")))
-)
+  mean(as.numeric(pull(la_df,norm_samp_pos)))
+  mean(as.numeric(pull(la_df,vec_char)))
+  mean(as.numeric(pull(la_df,vec_factor)))
 ```
-
+## The mean of norm_samp and factor vector works but the mean of the character vector

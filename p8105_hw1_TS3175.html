@@ -380,15 +380,33 @@ summary {
   norm_samp_pos=norm_samp&gt;0,
   vec_char=c(&quot;T&quot;, &quot;A&quot;, &quot;N&quot;, &quot;U&quot;, &quot;S&quot;, &quot;R&quot;, &quot;E&quot;, &quot;E&quot;),
   vec_factor= factor(c(&quot;cat&quot;, &quot;dog&quot;, &quot;snake&quot;, &quot;cat&quot;, &quot;dog&quot;, &quot;snake&quot;, &quot;cat&quot;, &quot;dog&quot;)),
-  mean(norm_samp),
-  mean(norm_samp_pos),
-  mean(vec_char),
-  mean(vec_factor),
-)</code></pre>
-<pre><code>## Warning in mean.default(vec_char): argument is not numeric or logical:
-## returning NA</code></pre>
-<pre><code>## Warning in mean.default(vec_factor): argument is not numeric or logical:
-## returning NA</code></pre>
+)
+  mean(pull(la_df, norm_samp))</code></pre>
+<pre><code>## [1] -0.04745952</code></pre>
+<pre class="r"><code>  mean(pull(la_df,norm_samp_pos))</code></pre>
+<pre><code>## [1] 0.625</code></pre>
+<pre class="r"><code>  mean(pull(la_df,vec_char))</code></pre>
+<pre><code>## Warning in mean.default(pull(la_df, vec_char)): argument is not numeric or
+## logical: returning NA</code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>  mean(pull(la_df,vec_factor))</code></pre>
+<pre><code>## Warning in mean.default(pull(la_df, vec_factor)): argument is not numeric
+## or logical: returning NA</code></pre>
+<pre><code>## [1] NA</code></pre>
+<div id="the-mean-of-norm_samp-and-norm_samp_pos-works-but-the-mean-of-vec_char-and-vec_factor-do-not." class="section level2">
+<h2>The mean of norm_samp and norm_samp_pos works but the mean of vec_char and vec_factor do not.</h2>
+<pre class="r"><code>  mean(as.numeric(pull(la_df,norm_samp_pos)))</code></pre>
+<pre><code>## [1] 0.625</code></pre>
+<pre class="r"><code>  mean(as.numeric(pull(la_df,vec_char)))</code></pre>
+<pre><code>## Warning in mean(as.numeric(pull(la_df, vec_char))): NAs introduced by
+## coercion</code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>  mean(as.numeric(pull(la_df,vec_factor)))</code></pre>
+<pre><code>## [1] 1.875</code></pre>
+</div>
+<div id="the-mean-of-norm_samp-and-factor-vector-works-but-the-mean-of-the-character-vector" class="section level2">
+<h2>The mean of norm_samp and factor vector works but the mean of the character vector</h2>
+</div>
 
 
 
