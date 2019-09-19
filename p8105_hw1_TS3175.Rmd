@@ -5,10 +5,10 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 ```
 
 ```{r Question_1}
-library(tidyverse)
 la_df = tibble(
   norm_samp=rnorm(8),
   norm_samp_pos=norm_samp>0,
@@ -29,4 +29,40 @@ la_df = tibble(
 ```
 ## The mean of norm_samp and factor vector works but the mean of the character vector. It doesn't work for character vector because it cannot be translated into numbers.
 
+```{r}
+  pull(la_df,norm_samp)*(as.numeric(pull(la_df,norm_samp_pos)))
+  pull(la_df,norm_samp)*(as.factor(pull(la_df,norm_samp_pos)))
+  pull(la_df,norm_samp)*(as.numeric(as.factor(pull(la_df,norm_samp_pos))))
+```
 
+##Question 2
+
+```{r}
+set.seed(1234)
+  graph_df = tibble(
+  x=rnorm(500),
+  y=rnorm(500),
+  log_vec=x+y>1
+  )
+num_var=as.numeric(pull(graph_df,log_vec))
+fac_var=as.factor(pull(graph_df,log_vec))
+```
+The data set has `r nrow(graph_df)` rows and `r ncol(graph_df)` columns
+The mean of the sample is `r mean(pull(graph_df,x))`
+The median of the sample is `r median(pull(graph_df,x))`
+The standard deviation of the sample is `r median(pull(graph_df,x))`
+The proportion of cases for which is `r mean(pull(graph_df,log_vec))`
+
+```{r scatterplot}
+  ggplot(graph_df, aes(x=x, y=y, color=log_vec)) + geom_point()
+## In the scatterplot above, true is red and it means that the value of the sum of x and y is greater than. The blue is false and it means that the value of the sume of x and y is less than 1.
+
+  ggplot(graph_df, aes(x=x, y=y, color=num_var)) + geom_point()
+## In the scatterplot above, the lighter blue represents that the value of the sum of x and y is greater than. The darker blue represents that the value of the sume of x and y is less than 1.
+  
+  ggplot(graph_df, aes(x=x, y=y, color =fac_var)) + geom_point()
+## In the scatterplot above, the blue represents that the value of the sum of x and y is greater than. The red represents that the value of the sume of x and y is less than 1.
+  
+   ggplot(graph_df, aes(x=x, y=y, color=log_vec)) + geom_point()
+   ggsave("scatterplot.pdf", height = 4, width = 6)
+```
