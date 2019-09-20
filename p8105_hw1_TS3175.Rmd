@@ -1,6 +1,7 @@
 ---
 title: "p8105_hw1_TS3175"
-output: html_document
+Name: Tanu Sreedharan
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
